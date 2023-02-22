@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  Задача: проверка значения из диапазона  -->
+    <script>
+        let age = +prompt("Задача 1\nВведите возраст", "");
+        if ((age >= 14) && (age <= 90)) {
+            alert("Возраст находится в диапазоне [14; 90].");
+        } else {
+            alert("Возраст не находится в диапазоне [14; 90].");
+        }
+    </script>
+
+<!--  Задача: проверка значения вне диапазона  -->
+    <script>
+        let age = +prompt("Задача 2\nВведите возраст", "");
+        // if ((age < 14) || (age > 90)) { ... } else { ... }
+        if (!((age >= 14) && (age <= 90))) {
+            alert("Возраст не находится в диапазоне [14; 90].");
+        } else {
+            alert("Возраст находится в диапазоне [14; 90].");
+        }
+    </script>
+
+<!--  Задача: проверка логина  -->
+    <script>
+        let login = prompt("Кто там?", "");
+        if ((login === "") || (login === null)) {
+            alert("Отменено");
+        } else
+        if (login === "Админ") {
+            let password = prompt("Пароль?", "");
+            if (password === null) {
+                alert("Отменено");
+            } else if (password === "Я главный") {
+                alert("Здравствуйте!");
+            } else {
+                alert("Неверный пароль");
+            }
+        } else {
+            alert("Я вас не знаю")
+        }
+    </script>
+</body>
+</html>

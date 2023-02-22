@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Задача: привет, object -->
+  <script>
+    const user = {};
+    user.name = "John";
+    user.surname = "Smith";
+    user.name = "Pete";
+    delete user.name;
+  </script>
+
+<!-- Задача: проверка на пустоту -->
+  <script>
+    function isEmpty(obj) {
+      for (let prop in obj) {
+        return false;
+      }
+      return true;
+    }
+
+    let schedule = {};
+
+    console.log(isEmpty(schedule)); // true
+
+    schedule["8:30"] = "get up";
+
+    console.log(isEmpty(schedule)); // false
+  </script>
+
+<!-- Задача: сумма свойств объекта -->
+  <script>
+    let salaries = {
+      John: 100,
+      Ann: 160,
+      Pete: 130
+    }
+
+    let result = 0;
+
+    for (let prop in salaries) {
+      result += salaries[prop];
+    }
+
+    console.log(result);
+  </script>
+
+<!-- Задача: умножаем все числовые свойства на 2 -->
+  <script>
+    function multiplyNumeric(obj) {
+      for (let prop in obj) {
+        if (typeof(obj[prop]) === "number") {
+          obj[prop] *= 2;
+        }
+      }
+    }
+
+    let menu = {
+      width: 200,
+      height: 300,
+      title: "My menu"
+    };
+
+    multiplyNumeric(menu);
+
+    console.log(menu);
+  </script>
+</body>
+</html>

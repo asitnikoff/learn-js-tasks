@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  Задача: создайте калькулятор при помощи конструктора, new Calculator  -->
+    <script>
+        function Calculator() {
+            this.read = function() {
+                this.a = +prompt("a?", "0");
+                this.b = +prompt("b?", "0");
+            };
+            this.sum = function() {
+                return (this.a + this.b);
+            };
+            this.mul = function() {
+                return (this.a * this.b);
+            }
+        }
+
+        let calculator = new Calculator();
+
+        calculator.read();
+        console.log(calculator.sum());
+        console.log(calculator.mul());
+    </script>
+
+<!-- Задача: создайте new Accumulator -->
+    <script>
+        function Accumulator(startingValue) {
+            this.value = startingValue;
+            this.read = function() {
+                const x = +prompt("x?", "0");
+                this.value += x;
+            }
+        }
+
+        let accumulator = new Accumulator(1); // начальное значение 1
+
+        accumulator.read(); // прибавляет введённое пользователем значение к текущему значению
+        accumulator.read(); // прибавляет введённое пользователем значение к текущему значению
+
+        alert(accumulator.value); // выведет сумму этих значений
+    </script>
+</body>
+</html>

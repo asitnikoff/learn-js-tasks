@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <!-- Задача: операции с массивами -->
+  <script>
+    let styles = ["Джаз", "Блюз"];
+    console.log(styles);
+    styles.push("Рок-н-ролл");
+    console.log(styles);
+    styles[(styles.length + 1) / 2 - 1] = "Классика";
+    console.log(styles);
+    console.log(styles.shift());
+    console.log(styles);
+    styles.unshift("Рэп", "Рэгги");
+    console.log(styles);
+  </script>
+
+  <!-- Задача: сумма введённых чисел -->
+  <script>
+    function sumInput() {
+      let arr = [];
+
+      while (true) {
+        const number = prompt("number?", "");
+
+        if ((number === "") || (number === null) || !isFinite(number)) {
+          break;
+        }
+
+        arr.push(+number);
+      }
+
+      let result = 0;
+      for (let elem of arr) {
+        result += elem;
+      }
+      return result;
+    }
+
+    console.log(sumInput());
+  </script>
+
+  <!-- Задача: подмассив наибольшей суммы -->
+  <script>
+    function getMaxSubSum(arr) {
+      let result = 0;
+      let sum = 0;
+
+      for (let elem of arr) {
+        sum += elem;
+        result = Math.max(result, sum);
+        sum = Math.max(sum, 0);
+      }
+
+      return result;
+    }
+
+    console.log(getMaxSubSum([-1, 2, 3, -9]) === 5);
+    console.log(getMaxSubSum([2, -1, 2, 3, -9]) === 6);
+    console.log(getMaxSubSum([-1, 2, 3, -9, 11]) === 11);
+    console.log(getMaxSubSum([-2, -1, 1, 2]) === 3);
+    console.log(getMaxSubSum([100, -9, 2, -3, 5]) === 100);
+    console.log(getMaxSubSum([1, 2, 3]) === 6);
+    console.log(getMaxSubSum([-1, -2, -3]) === 0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  Задача: выведите чётные числа  -->
+    <script>
+        for (let i = 2; i <= 10; i += 2) {
+            alert(i);
+        }
+    </script>
+
+<!--  Задача: замените for на while  -->
+    <script>
+        let i = 0;
+        while (i < 3) {
+            alert(`number ${i}!`);
+            ++i;
+        }
+    </script>
+
+<!--  Задача: повторять цикл, пока ввод неверен  -->
+    <script>
+        let number;
+        do {
+            number = prompt("Введите число большее 100", "0");
+        } while ((number <= 100) && (number !== null));
+    </script>
+
+<!--  Задача: вывести простые числа  -->
+    <script>
+        function is_prime(x) {
+            for (let i = 2; (i * i) <= x; ++i) {
+                if ((x % i) === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        let n = +prompt("Введите n большее 1", "2");
+        for (let i = 2; i <= n; ++i) {
+            if (is_prime(i)) {
+                alert(`number ${i} is prime`);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

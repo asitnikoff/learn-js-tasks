@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <!-- Задача: создайте дату -->
+  <script>
+    const date = new Date(2012, 1, 20, 3, 12);
+    alert(date);
+  </script>
+
+  <!-- Задача: покажите день недели -->
+  <script>
+    function getWeekDay(date) {
+      const days = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
+      return days[date.getDay()];
+    }
+
+    let date2 = new Date(2012, 0, 3);  // 3 января 2012 года
+    console.log( getWeekDay(date2) );        // нужно вывести "ВТ"
+  </script>
+
+  <!-- Задача: день недели в европейской нумерации -->
+  <script>
+    function getLocalDay(date) {
+      return (date.getDay() === 0) ? 7 : date.getDay();
+    }
+
+    let date3 = new Date(2012, 0, 3);  // 3 января 2012 года
+    console.log( getLocalDay(date3) ); // вторник, нужно показать 2
+  </script>
+
+  <!-- Задача: какой день месяца был много дней назад? -->
+  <script>
+    function getDateAgo(date, days) {
+      let newDate = new Date(date);
+      newDate.setDate(date.getDate() - days);
+      return newDate.getDate();
+    }
+
+    let date4 = new Date(2015, 0, 2);
+
+    console.log( getDateAgo(date4, 1) ); // 1, (1 Jan 2015)
+    console.log( getDateAgo(date4, 2) ); // 31, (31 Dec 2014)
+    console.log( getDateAgo(date4, 365) ); // 2, (2 Jan 2014)
+  </script>
+
+  <!-- Задача: последнее число месяца? -->
+  <script>
+    function getLastDayOfMonth(year, month) {
+      return (new Date(year, month + 1, 0)).getDate();
+    }
+
+    console.log(getLastDayOfMonth(2012, 1));
+  </script>
+
+  <!-- Задача: сколько сегодня прошло секунд? -->
+  <script>
+    function getSecondsToday() {
+      const date = new Date();
+      return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+    }
+
+    console.log(getSecondsToday());
+  </script>
+
+  <!-- Задача: сколько секунд осталось до завтра? -->
+  <script>
+    function getSecondsToTomorrow() {
+      let date = new Date();
+      return 24 * 3600 - (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds());
+    }
+
+    console.log(getSecondsToTomorrow());
+  </script>
+
+  <!-- Задача: форматирование относительной даты -->
+  <script>
+    function formatDate(date) {
+      let diff = (new Date()) - date;
+
+      if (diff < 1000) {
+        return "прямо сейчас";
+      }
+
+      if (diff < (60 * 1000)) {
+        return `${Math.floor(diff / 1000)} сек. назад`;
+      }
+
+      if (diff < (60 * 60 * 1000)) {
+        return `${Math.floor((diff / 1000) / 60)} мин. назад`;
+      }
+
+      const result = [
+              '0' + date.getDate(),
+              '0' + date.getMonth(),
+              date.getFullYear().toString(),
+              '0' + date.getHours(),
+              '0' + date.getMinutes()
+      ].map(date => date.slice(-2));
+
+      return result.slice(0, 3).join('.') + ' ' + result.slice(-2).join(':');
+    }
+
+    console.log( formatDate(new Date(new Date - 1)) ); // "прямо сейчас"
+
+    console.log( formatDate(new Date(new Date - 30 * 1000)) ); // "30 сек. назад"
+
+    console.log( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 мин. назад"
+
+    // вчерашняя дата вроде 31.12.2016, 20:00
+    console.log( formatDate(new Date(new Date - 86400 * 1000)) );
+  </script>
+</body>
+</html>

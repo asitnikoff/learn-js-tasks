@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <!-- Задача: деструктурирующее присваивание -->
+  <script>
+    let user = {
+      name: "John",
+      years: 30
+    };
+
+    let { name, years: age, isAdmin = false } = user;
+
+    console.log(name);
+    console.log(age);
+    console.log(isAdmin);
+  </script>
+
+  <!-- Задача: максимальная зарплата -->
+  <script>
+    function topSalary(salaries) {
+      let maxSalary = -1;
+      let resultName = null;
+      for (let [name, value] of Object.entries(salaries)) {
+        if (value > maxSalary) {
+          maxSalary = value;
+          resultName = name;
+        }
+      }
+
+      return resultName;
+    }
+
+    let salaries = {
+      "John": 100,
+      "Pete": 300,
+      "Mary": 250
+    };
+
+
+    console.log(topSalary(salaries));
+  </script>
+</body>
+</html>

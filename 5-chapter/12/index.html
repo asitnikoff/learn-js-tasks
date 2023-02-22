@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <!-- Задача: преобразуйте объект в JSON, а затем обратно в обычный объект -->
+  <script>
+    let user = {
+      name: "Василий Иванович",
+      age: 35
+    };
+
+    let userJSON = JSON.stringify(user);
+    let newUser = JSON.parse(userJSON);
+
+    console.log(newUser);
+  </script>
+
+  <!-- Задача: исключить обратные ссылки -->
+  <script>
+    let room = {
+      number: 23
+    };
+
+    let meetup = {
+      title: "Совещание",
+      occupiedBy: [{name: "Иванов"}, {name: "Петров"}],
+      place: room
+    };
+
+    // цикличные ссылки
+    room.occupiedBy = meetup;
+    meetup.self = meetup;
+
+    console.log( JSON.stringify(meetup, function replacer(key, value) {
+      if ((key !== "") && (value === meetup)) {
+        return undefined;
+      }
+      return value;
+    }));
+
+    /* в результате должно быть:
+    {
+      "title":"Совещание",
+      "occupiedBy":[{"name":"Иванов"},{"name":"Петров"}],
+      "place":{"number":23}
+    }
+    */
+  </script>
+</body>
+</html>
